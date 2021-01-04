@@ -49,5 +49,5 @@ dut_iso_f.write('\nendmodule\n')
 # -------------------
 pat_setup_f.write('<\'\nextend wb_yarkon_smp_u {\n')
 for pad in pad_list:
-    pat_setup_f.write('def_hwp {}__connect of bit = "arbel_iso/{}__connect";\n'.format(pad, pad))
+    pat_setup_f.write('    def_hwp {}__connect of bit = "arbel_iso/{}__connect";\n'.format(pad, pad))
 pat_setup_f.write('}  -- End of  wb_yarkon_smp_u\n\n\'>')
