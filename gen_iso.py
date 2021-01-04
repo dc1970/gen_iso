@@ -39,7 +39,7 @@ for pad in pad_list:
     dut_iso_f.write('    inout {}__dut;\n'.format(pad))
     dut_iso_f.write('    inout {};\n'.format(pad))
     dut_iso_f.write('    reg {}__connect;\n'.format(pad))
-    dut_iso_f.write('    initial {}__connect == 1\'b0;\n'.format(pad))
-    dut_iso_f.write('    tranif1({}, {}__dut, {}__connect;\n\n'.format(pad, pad, pad))
+    dut_iso_f.write('    initial {}__connect = 1\'b0;\n'.format(pad))
+    dut_iso_f.write('    tranif1({}, {}__dut, {}__connect);\n\n'.format(pad, pad, pad))
 
 dut_iso_f.write('\nendmodule\n')
