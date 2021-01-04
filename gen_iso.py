@@ -9,7 +9,7 @@ pat_setup_f = open('patterns_setup.e', 'w')
 # -----------------------
 
 # dut instance
-dut_pat_f.write('arbel_top_taa0 dut(\n')
+dut_pat_f.write('arbel_top_tab0 dut(\n')
 for pad in pad_list:
     dut_pat_f.write('    .{}({}__dut),\n'.format(pad, pad))
 
