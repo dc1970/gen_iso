@@ -1,5 +1,6 @@
 
 pad_list = open('pads_list.txt', 'r').read().splitlines()
+sup_list = open('supply_list.txt', 'r').read().splitlines()
 dut_pat_f = open('arbel_dut_pat.inc', 'w')
 dut_iso_f = open('arbel_iso.v', 'w')
 pat_setup_f = open('patterns_setup.e', 'w')
@@ -10,13 +11,14 @@ pat_setup_f = open('patterns_setup.e', 'w')
 # dut instance
 dut_pat_f.write('arbel_top_taa0 dut(\n')
 for pad in pad_list:
-    dut_pat_f.write('    .{}({}__dut)'.format(pad, pad))
-    if pad != pad_list[-1]:
-        dut_pat_f.write(',\n')
-dut_pat_f.write('\n}; // End of dut\n\n\n\n')
+    dut_pat_f.write('    .{}({}__dut),\n'.format(pad, pad))
+
+# Add supplies
+for line in sup_list:
+    dut_pat_f.write(line + '\n')
 
 # iso instance
-dut_pat_f.write('arbel_iso arbel_iso(\n')
+dut_pat_f.write('\n\n\narbel_iso arbel_iso(\n')
 for pad in pad_list:
     dut_pat_f.write('    .{}({}__dut),\n'.format(pad, pad))
     dut_pat_f.write('    .{}({})'.format(pad, pad))
