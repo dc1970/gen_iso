@@ -2,6 +2,7 @@
 pad_list = open('pads_list.txt', 'r').read().splitlines()
 dut_pat_f = open('arbel_dut_pat.inc', 'w')
 dut_iso_f = open('arbel_iso.v', 'w')
+pat_setup_f = open('patterns_setup.e', 'w')
 
 # Write arbel_dut_pat.inc
 # -----------------------
@@ -43,3 +44,10 @@ for pad in pad_list:
     dut_iso_f.write('    tranif1({}, {}__dut, {}__connect);\n\n'.format(pad, pad, pad))
 
 dut_iso_f.write('\nendmodule\n')
+
+# Write patterns setup
+# -------------------
+pat_setup_f.write('<\'\nextend wb_yarkon_smp_u {\n')
+for pad in pad_list:
+    pat_setup_f.write('def_hwp {}__connect of bit = "arbel_iso/{}__connect";\n'.format(pad, pad))
+pat_setup_f.write('}  -- End of  wb_yarkon_smp_u\n\n\'>')
