@@ -24,7 +24,7 @@ for pad in pad_list:
     dut_pat_f.write('    .{}({})'.format(pad, pad))
     if pad != pad_list[-1]:
         dut_pat_f.write(',\n')
-dut_pat_f.write('\n}; // End of arbel_iso\n\n\n\n')
+dut_pat_f.write('\n); // End of arbel_iso\n\n\n\n')
 
 
 
