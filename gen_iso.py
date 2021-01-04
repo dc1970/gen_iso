@@ -20,7 +20,7 @@ for line in sup_list:
 # iso instance
 dut_pat_f.write('\n\n\narbel_iso arbel_iso(\n')
 for pad in pad_list:
-    dut_pat_f.write('    .{}({}__dut),\n'.format(pad, pad))
+    dut_pat_f.write('    .{}__dut({}__dut),\n'.format(pad, pad))
     dut_pat_f.write('    .{}({})'.format(pad, pad))
     if pad != pad_list[-1]:
         dut_pat_f.write(',\n')
